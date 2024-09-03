@@ -1,0 +1,27 @@
+template header
+
+name
+kundenDTO
+value
+
+package drools.templates;
+
+import com.example.drools.web.KundenDTO;
+import java.util.*;
+
+import function com.example.drools.droolsUtils.DroolsFunctions.addFiredRule;
+
+global Set<UUID> searchResponse;
+
+dialect "java"
+
+template "DynamicRules"
+
+rule "@{name}"
+when
+    @{kundenDTO}(@{value})
+then
+	addFiredRule(drools, searchResponse);
+end
+
+end template
